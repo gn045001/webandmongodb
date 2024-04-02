@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>填寫資料</title>
+</head>
+<body>
+<h1>填寫資料</h1>
+<form id="dataForm">
+    <label for="day">日期:</label><br>
+    <input type="text" id="day" name="day"><br>
+    <label for="state">巡檢狀況:</label><br>
+    <input type="text" id="state" name="state"><br>
+    <label for="summerlog">處理過程說明:</label><br>
+    <input type="text" id="summerlog" name="summerlog"><br><br>
+    <button type="submit">提交</button>
+</form>
+
+<script>
+    document.getElementById('dataForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const day = document.getElementById('day').value;
+        const state = document.getElementById('state').value;
+        const summerlog = document.getElementById('summerlog').value;
+        
+        const response = await fetch('/addData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ day, state,summerlog })
+        });
+        
+        if (response.ok) {
+            alert('成功提交資料!');
+            document.getElementById('day').value = '';
+            ocument.getElementById('state').value = '';
+            document.getElementById('summerlog').value = '';
+        } else {
+            alert('提交資料失敗');
+        }
+    });
+</script>
+</body>
+</html>
