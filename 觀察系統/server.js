@@ -9,7 +9,7 @@ const port = 3000;  // 設置應用程序監聽端口為 3000
 //section 2:description 進行MongoDB設定
 
 //連接MongoDB 數據庫
-mongoose.connect('mongodb://XXXXXX:gXXXXX1@XX.1XX.X0.XX3:27XX7', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://XXXXXXX:gXXXXXX@XX.1XX.XX.XX:27017', { useNewUrlParser: true, useUnifiedTopology: true });
 // 獲取數據庫連接對象
 const db = mongoose.connection;
 // 監聽數據庫連接錯誤事件
